@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicle Information{% endblock title %}
+
+{% block body %}
+<div class="container">
+    {% for a in query  %}
+    <div class="row mt-4">
+        <div class="col-md-3 ">
+            <div class="card">
+                <img src="static\source.unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{a.model}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 animate__animated animate__slideInLeft" >
+            <div class="mb-2">
+                <label class="form-label">Vehicle Name</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_name}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Model</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.model}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Color</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.color}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Specs</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.spec}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Vehicle Number</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.num_plate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Warrenty</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.warranty}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Manufacture Year</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.manufacture_year}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Vehicle ID</label>
+                <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_id}}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

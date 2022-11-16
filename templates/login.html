@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">{{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>      
+  {% endfor %}
+  {% endif %}  
+  {% endwith %}
+<div class="container mt-3">
+  <div class="row">
+    <!-- Bootstrap has total 12 Columns and 3 Rows  -->
+
+    <div class="col-md-4"></div>
+    
+    <div style="background-color: rgb(0, 162, 255);" class="col-md-3 jumbotron animate__fadeIn">
+      <h4 class="text-lg-center text-black">Login</h4><br>
+
+      
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="email" class="text-black form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="text-black form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+          <span id="passwordHelpInline" class="form-text text-dark">
+            #
+          </span>
+        </div>
+        <div class="d-grid gap-2">
+          <button style="background-color: rgb(0, 255, 0);" type="submit" class=" btn btn-outline-dark text-black">Login</button>
+        </div>
+        <br>
+        New to ADMs? <a class="text-primary" href="/register">Create a Account</a>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>
+
+{% endblock body %}

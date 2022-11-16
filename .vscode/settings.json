@@ -1,0 +1,13 @@
+{
+    "python.analysis.typeCheckingMode": "off",
+    "cSpell.ignoreWords": [
+        "SQLALCHEMY",
+        "cust",
+        "cvid",
+        "dropbtn",
+        "encpassword",
+        "sqlalchemy",
+        "werkzeug",
+        "xampp"
+    ]
+}

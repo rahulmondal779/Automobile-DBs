@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Details{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">{{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+<div class="mt-3">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2">
+            <div class="card" style="width: 19rem;">
+                <img src="\static\2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Details</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for a in query  %}
+                    <li class="list-group-item">Name : {{a.name}} </li>
+                    <li class="list-group-item">Email : {{current_user.email}} </li>
+                    <li class="list-group-item">Mobile : {{a.mobile}}</li>
+                    <li class="list-group-item">
+                        <p>Address : {{a.address}}</p>
+                    </li>
+                    <li class="list-group-item">Vehicle ID : {{a.vehicle_id}} </li>
+                </ul>
+                <br>
+                <div class="container"><a href="/edit/{{a.cid}}"><button class="btn btn-outline-primary btn-primary btn-sm text-white"><strong>Edit</strong></button></a>
+                </div>
+                <!-- <div class="container"><a href="/edit/{{a.cid}}"><button class="btn btn-outline-primary btn-primary btn-sm text-white"><strong>Edit</strong></button></a>
+                </div> -->
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+    </div>
+    {% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Details{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3 jumbotron">
+            <form action="/edit/{{posts.cid}}" method="POST">
+             {% for c in cust %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="{{c.name}}" name="name">
+            </div>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="{{c.email}}" name="email" disabled>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">+91</span>
+                <input type="Number" class="form-control" placeholder="{{c.mobile}}" name="number">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Address</span>
+                <textarea class="form-control" placeholder="{{c.address}}" name="address"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Vehicle ID</span>
+                <span class="input-group-text" id="basic-addon1">{{c.vehicle_id}}</span>
+            </div>
+            <div class="d-grid gap-2">
+                <button style="background-color: rgb(0, 255, 0);" type="submit"
+                    class=" btn btn-primary btn-outline-dark text-black">Update</button>
+            </div>
+            {% endfor %}
+         </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

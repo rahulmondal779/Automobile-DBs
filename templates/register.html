@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+        <!-- Bootstrap has total 3 Columns and 12 Rows  -->
+        <div class="col-md-4"></div>
+        <div style="background-color: rgb(0, 162, 255);" class="col-md-3 jumbotron">
+            <h4 class="text-lg-center">Sign Up</h4><br>
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">{{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form class="needs-validation " novalidate action="/register" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Name" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com" name="email"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-label">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+91</span>
+                        <input type="Number" class="form-control" placeholder="Enter Number" name="number" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input style="width: 19rem;" type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="vehicle_id" class="form-label">Vehicle ID</label>
+                    <input type="text" class="form-control" placeholder="Enter Vehicle ID" name="vehicle_id" required>
+                    <div>Example : DBXXPRXXXX</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                      <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                      </label>
+                      <div class="invalid-feedback">
+                        You must agree before submitting.
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="d-grid gap-2">
+                    <button style="background-color: rgb(0, 255, 0);" type="submit"
+                        class=" btn btn-primary btn-outline-dark text-black">Sign
+                        Up</button>
+                </div><br>
+                Already have an account?
+                <a class="text-primary" href="/login">Click here</a>
+            </form>
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+
+</div>
+
+{% endblock body %}
