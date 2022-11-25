@@ -78,10 +78,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Products</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="contact">About Us</a>
+            <a class="nav-link" href="/product">Products</a>
           </li>
           {% if current_user.is_authenticated %}
           <li class="nav-item dropdown active">
@@ -97,6 +94,9 @@
             <button class="btn btn-outline-info my-2 my-sm-0 text-white" type="submit">Search</button>
           </form> -->
           {% endif %}
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="contact">About Us</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
             {% if current_user.is_authenticated %}            

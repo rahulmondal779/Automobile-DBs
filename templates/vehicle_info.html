@@ -3,8 +3,8 @@
 {% block title %}Vehicle Information{% endblock title %}
 
 {% block body %}
+{% for a in query  %}
 <div class="container">
-    {% for a in query  %}
     <div class="row mt-4">
         <div class="col-md-3 ">
             <div class="card">
@@ -13,10 +13,11 @@
                     <h5 class="card-title">{{a.model}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
-        </div>
+            <form action="/warrenty">
         <div class="col-md-4 animate__animated animate__slideInLeft" >
             <div class="mb-2">
                 <label class="form-label">Vehicle Name</label>
@@ -51,9 +52,58 @@
                 <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_id}}</span>
             </div>
         </div>
+    </form>
     </div>
-    {% endfor %}
 </div>
-
+{% endfor %}
+<div class="container animate__animated animate__slideInLeft">
+    <div class="row mt-4">
+        <div class="col-md-3 ">
+            <div class="card">
+                <img src="static\source.unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" >
+            <div class="mb-2">
+                <label class="form-label">Vehicle Name</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Model</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Color</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Specs</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Vehicle Number</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Warrenty</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Manufacture Year</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Vehicle ID</label>
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

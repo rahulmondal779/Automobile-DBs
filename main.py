@@ -53,7 +53,7 @@ class Customer_vehicle(db.Model):
     manufacture_year = db.Column(db.String(50), nullable=False)
 
 
-# The initial page of the website
+# The Home page of the website
 @app.route('/')
 def index():
     try:
@@ -67,7 +67,7 @@ def index():
 # def r():
 #     return render_template('r.html')
 
-# Login function using post method. Also use encryption so that password cannot be seen
+# Customer can login,
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     if request.method == "POST":
@@ -86,7 +86,7 @@ def login():
     return render_template('login.html')
 
 
-# Register function for the new user's.
+# New Customer can signup, also the password is encrypted when stored in the database
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     if request.method == "POST":
@@ -114,7 +114,7 @@ def register():
         return render_template('login.html')
     return render_template('register.html')
 
-# logout
+# Customer/admin is logged out
 @app.route("/logout")
 @login_required
 def logout():
@@ -122,7 +122,7 @@ def logout():
     flash(f"Logout Successful", "info")
     return redirect(url_for('login'))
 
-# customer details
+# customer details is displayed
 @app.route('/customer_details')
 @login_required
 def c_details():
@@ -131,7 +131,7 @@ def c_details():
     query = db.engine.execute(f"SELECT * FROM `customer` WHERE email='{em}'")
     return render_template('c_details.html', query=query)
 
-# when customer clicks the edit button to change his/her information
+# To edit details of the customer, 
 @app.route("/edit/<string:cid>",methods=['POST', 'GET'])
 @login_required
 def edit(cid):
@@ -149,18 +149,27 @@ def edit(cid):
     return render_template('c_update.html', posts=posts,cust=cust)
 
 # Shows Customer Vehicle Information 
-@app.route('/warranty')
+@app.route("/warranty")
 @login_required
 def warranty():
-    query = db.engine.execute(f"SELECT *FROM `customer_vehicle`")
+    em = current_user.email
+    query = db.engine.execute(f"SELECT  *FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
     return render_template('vehicle_info.html',query=query)
+    
+# Shows the Products which are available,
+@app.route('/product')
+@login_required
+def Product():
+    # query = db.engine.execute(f"SELECT *FROM `customer_vehicle`")
+    return render_template('product.html')
 
+# Shows Customer the Services we provide to the customer
 @app.route('/service')
 @login_required
 def service():
     return render_template('service.html')
 
-# contact us Page
+# Contact us Page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
