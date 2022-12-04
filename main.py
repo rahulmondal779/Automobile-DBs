@@ -174,5 +174,10 @@ def service():
 def contact():
     return render_template('contact.html')
 
+
+@app.route('/test')
+def test():
+    return render_template('cardstyle.html')
+
 # To run the application
 app.run(debug=True)
