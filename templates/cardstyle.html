@@ -7,7 +7,7 @@
     background-color: transparent;
     width: 300px;
     height: 200px;
-    border: 1px solid #ffffff;
+    border: 1px solid #000000;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
   }
@@ -47,6 +47,13 @@
     background-color: rgb(195, 0, 255);
     transform: rotateY(180deg);
   }
+  .card {
+    --bs-card-border-color: rgb(88 176 244);
+    --bs-card-cap-bg: rgb(88, 176, 244);
+    --bs-card-bg:rgb(88, 176, 244);
+    background-color: var(--bs-card-bg);
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  }
   /* .content {
     position: relative;
     margin: 0 auto;
@@ -54,13 +61,13 @@
 </style>
 {% endblock style %}
 {% block body %}
-<div class="container ">
+<div class="container mt-2 ">
   <div class="row">
-    <div class="col-md-3 card">
-      <div class="flip-card">
+    <div class="col-md-3">
+      <div class="flip-card card">
         <div class="flip-card-inner">
           <div class="flip-card-front mt-2" >
-            <img src="static\source.unsplash.jpg" class="card-img-top" alt="Car">
+            <img src="static\Bg\tnb-tenaganasional.gif" class="card-img-top" alt="Car">
             <div class="card-body" style="background-color: rgba(205, 13, 239, 0.995);">
               <h5 class="card-title"></h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -68,8 +75,9 @@
             </div>
           </div>
           <div class="flip-card-back mt-2">
-            <img src="static\source.unsplash.jpg" class="card-img-top">
+            <img src="static\Bg\tnb-tenaganasional.gif" class="card-img-top">
             <div class="card-body" style="background-color: rgb(0, 76, 255);" >
+              <form action="/warrenty">
               <div class="mb-2">
                 <label class="form-label">Vehicle Name</label>
                 <span class="input-group-text" id="inputGroupPrepend"></span>
@@ -102,6 +110,7 @@
                 <label class="form-label">Vehicle ID</label>
                 <span class="input-group-text" id="inputGroupPrepend"></span>
               </div>
+              </form>
             </div>
           </div>
         </div>

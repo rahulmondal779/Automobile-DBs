@@ -46,6 +46,7 @@ class Customer_vehicle(db.Model):
     cust_id = db.Column(db.Integer)
     vehicle_name = db.Column(db.String(20))
     model = db.Column(db.String(20))
+    about = db.Column(db.String(20000))
     color = db.Column(db.String(1000))
     spec = db.Column(db.String(1000))
     num_plate = db.Column(db.String(50))
