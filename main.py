@@ -64,9 +64,9 @@ def index():
         return "Please Connect to Database"
 
 # Register sample
-# @app.route("/r")
-# def r():
-#     return render_template('r.html')
+@app.route("/r")
+def r():
+    return render_template('r.html')
 
 # Customer can login,
 @app.route("/login", methods=['POST', 'GET'])
@@ -175,7 +175,7 @@ def service():
 def contact():
     return render_template('contact.html')
 
-
+# Test Page
 @app.route('/test')
 def test():
     return render_template('cardstyle.html')

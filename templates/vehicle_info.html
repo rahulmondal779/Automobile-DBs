@@ -68,7 +68,7 @@
         <div class="flip-card card">
           <div class="flip-card-inner">
             <div class="flip-card-front mt-2" >
-              <img src="static\Bg\tnb-tenaganasional.gif" class="card-img-top" alt="Car">
+              <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
               <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
                 <h5 class="card-title">{{a.model}}</h5>
                 <p class="card-text">{{a.About}}</p>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="flip-card-back mt-2">
-              <img src="static\Bg\tnb-tenaganasional.gif" class="card-img-top">
+              <img src="static\Bg\car-two.gif" class="card-img-top">
               <div class="card-body" style="background-color: rgb(0, 76, 255);" >
               <form action="/warrenty">
                 <div class="mb-2">
@@ -119,55 +119,18 @@
       </div>
     </div>
   </div> 
-<!-- {% endfor %}
-<div class="container">
-    <div class="row mt-4">
-        <div class="col-md-3 ">
-            <div class="card">
-                <img src="static\Bg\tnb-tenaganasional.gif" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+{% endfor %}
+<div class="container mt-2 ">
+    <div class="row">
+      <div class="col-md-3">
+        <div class=" card">
+          <div class="flip-card-inner">
+            <div class="mt-2" >
+              <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
+              <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
+                <h5 class="card-title">No Vehicle</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Add Vehicle</a>
+              </div>
             </div>
-            <div class="col-md-4" >
-            <div class="mb-2">
-                <label class="form-label">Vehicle Name</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Model</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Color</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Specs</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Vehicle Number</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Warrenty</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Manufacture Year</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Vehicle ID</label>
-                <span class="input-group-text" id="inputGroupPrepend"></span>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 {% endblock %}
