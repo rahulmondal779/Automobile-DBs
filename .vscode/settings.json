@@ -2,11 +2,14 @@
     "python.analysis.typeCheckingMode": "off",
     "cSpell.ignoreWords": [
         "SQLALCHEMY",
+        "Warrenty",
+        "cardstyle",
         "cust",
         "cvid",
         "dropbtn",
         "encpassword",
         "sqlalchemy",
+        "warrenty",
         "werkzeug",
         "xampp"
     ]
