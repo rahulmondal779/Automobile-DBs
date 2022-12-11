@@ -11,6 +11,7 @@
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
   }
+
   /* This container is needed to position the front and back side */
   .flip-card-inner {
     position: relative;
@@ -21,6 +22,7 @@
     transform-style: preserve-3d;
 
   }
+
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
@@ -36,24 +38,28 @@
     /* Safari */
     backface-visibility: hidden;
   }
+
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
     background-color: rgb(23, 27, 41);
     color: black;
   }
+
   /* Style the back side */
   .flip-card-back {
     color: rgb(0, 0, 0);
     background-color: rgb(195, 0, 255);
     transform: rotateY(180deg);
   }
+
   .card {
     --bs-card-border-color: rgb(88 176 244);
     --bs-card-cap-bg: rgb(88, 176, 244);
-    --bs-card-bg:rgb(88, 176, 244);
+    --bs-card-bg: rgb(88, 176, 244);
     background-color: var(--bs-card-bg);
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   }
+
   /* .content {
     position: relative;
     margin: 0 auto;
@@ -61,23 +67,24 @@
 </style>
 {% endblock style %}
 {% block body %}
-{% for a in query  %}
-<div class="container mt-2 ">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="flip-card card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front mt-2" >
-              <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
-              <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
-                <h5 class="card-title">{{a.model}}</h5>
-                <p class="card-text">{{a.About}}</p>
-                <a href="#" class="btn btn-primary">Vehicle Details</a>
-              </div>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-auto"></div>
+    {% for a in query %}
+    <div class="col-md-3">
+      <div class="flip-card card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front mt-2">
+            <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
+            <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
+              <h5 class="card-title">{{a.model}}</h5>
+              <p class="card-text">{{a.About}}</p>
+              <a href="#" class="btn btn-primary">Vehicle Details</a>
             </div>
-            <div class="flip-card-back mt-2">
-              <img src="static\Bg\car-two.gif" class="card-img-top">
-              <div class="card-body" style="background-color: rgb(0, 76, 255);" >
+          </div>
+          <div class="flip-card-back mt-2">
+            <img src="static\Bg\car-two.gif" class="card-img-top">
+            <div class="card-body" style="background-color: rgb(0, 76, 255);">
               <form action="/warrenty">
                 <div class="mb-2">
                   <label class="form-label">Vehicle Name</label>
@@ -111,26 +118,14 @@
                   <label class="form-label">Vehicle ID</label>
                   <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_id}}</span>
                 </div>
-                </form>
-              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div> 
-{% endfor %}
-<div class="container mt-2 ">
-    <div class="row">
-      <div class="col-md-3">
-        <div class=" card">
-          <div class="flip-card-inner">
-            <div class="mt-2" >
-              <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
-              <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
-                <h5 class="card-title">No Vehicle</h5>
-                <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Add Vehicle</a>
-              </div>
-            </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock %}

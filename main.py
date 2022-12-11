@@ -23,6 +23,7 @@ def load_user(user_id):
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/automobile'
 db = SQLAlchemy(app)
 
+
 # Tables in the sql server are represented as classes, this table is for Login and Register
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -52,6 +53,8 @@ class Customer_vehicle(db.Model):
     num_plate = db.Column(db.String(50))
     warranty = db.Column(db.String(50), nullable=False)
     manufacture_year = db.Column(db.String(50), nullable=False)
+   
+
 
 
 # The Home page of the website
@@ -155,7 +158,8 @@ def edit(cid):
 def warranty():
     em = current_user.email
     query = db.engine.execute(f"SELECT  *FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
-    return render_template('vehicle_info.html',query=query)
+    count = db.engine.execute(f"SELECT COUNT(*) FROM `customer_vehicle`")
+    return render_template('vehicle_info.html',query=query,count=count)
     
 # Shows the Products which are available,
 @app.route('/product')
@@ -178,7 +182,7 @@ def contact():
 # Test Page
 @app.route('/test')
 def test():
-    return render_template('cardstyle.html')
+    return render_template('test.html')
 
 # To run the application
 app.run(debug=True)

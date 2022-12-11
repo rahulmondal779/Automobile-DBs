@@ -1,0 +1,57 @@
+<div class="container mt-2 ">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="flip-card card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front mt-2" >
+              <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
+              <div class="card-body" style="background-color: rgba(146, 233, 236, 0.995);">
+                <h5 class="card-title">{{a.model}}</h5>
+                <p class="card-text">{{a.About}}</p>
+                <a href="#" class="btn btn-primary">Vehicle Details</a>
+              </div>
+            </div>
+            <div class="flip-card-back mt-2">
+              <img src="static\Bg\car-two.gif" class="card-img-top">
+              <div class="card-body" style="background-color: rgb(0, 76, 255);" >
+              <form action="/warrenty">
+                <div class="mb-2">
+                  <label class="form-label">Vehicle Name</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_name}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Model</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.model}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Color</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.color}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Specs</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.spec}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Vehicle Number</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.num_plate}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Warrenty</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.warranty}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Manufacture Year</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.manufacture_year}}</span>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Vehicle ID</label>
+                  <span class="input-group-text" id="inputGroupPrepend">{{a.vehicle_id}}</span>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
