@@ -4,4 +4,69 @@
 
 {% block body %}
 
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3 jumbotron">
+            <h3>Book Your Appointment</h3>
+            <form action="/service" method="post">
+                <div class="input-group mb-3 mt-4">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                    <input type="text" class="form-control" placeholder="Enter Your Name" name="name" id="name" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                    <input type="text" class="form-control" placeholder="{{current_user.email}}" value="{{current_user.email}}" name="email"
+                        id="email" Disabled>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Vehicle ID</span>
+                    {% for b in query %}
+                    <input type="text" class="form-control" placeholder="{{b.vehicle_id}}" name="Vid" id="Vid" value="{{b.vehicle_id}}" Disabled>
+                    {% endfor %}
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Select Vehicle</span>
+                    <select class="form-select" name="number_plate" id="number_plate" >
+                        {% for c in number_plate %}
+                        <option>{{c.num_plate}}</option required>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Service</span>
+                    <select class="form-select" name="service" id="service" required >
+                        {% for a in services %}
+                        <option>{{a.services_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Manufacture</span>
+                    <input type="date" class="form-control" placeholder="Enter Year" name="manudate" id="manudate" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Expire</span>
+                    <input type="date" class="form-control" placeholder="Date" name="expdate" id="expdate" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Other Issues</span>
+                    <textarea class="form-control" name="issues" id="issues"></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button style="background-color: rgb(0, 255, 0);" type="submit"
+                        class=" btn btn-primary btn-outline-dark text-black">Book</button>
+                </div><br>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

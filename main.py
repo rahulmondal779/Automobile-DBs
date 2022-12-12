@@ -53,8 +53,21 @@ class Customer_vehicle(db.Model):
     num_plate = db.Column(db.String(50))
     warranty = db.Column(db.String(50), nullable=False)
     manufacture_year = db.Column(db.String(50), nullable=False)
-   
 
+# Table to Store the customer service vehicle 
+class Customer_vehicle_service(db.Model):
+    cvs_id = db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(20))
+    vehicle_id = db.Column(db.String(20))
+    description = db.Column(db.String(1000))
+    manufacture = db.Column(db.String(50),nullable=False)
+    exp_date = db.Column(db.String(50),nullable=False)
+    textarea = db.Column(db.String(1000))
+
+# Service Name
+class Services(db.Model):
+    sid = db.Column(db.Integer,primary_key=True)
+    services_name = db.Column(db.String(100))
 
 
 # The Home page of the website
@@ -118,13 +131,25 @@ def register():
         return render_template('login.html')
     return render_template('register.html')
 
-# Customer/admin is logged out
-@app.route("/logout")
+# Shows Customer the Services we provide to the customer
+@app.route('/service', methods=['POST','GET'])
 @login_required
-def logout():
-    logout_user()
-    flash(f"Logout Successful", "info")
-    return redirect(url_for('login'))
+def service():
+    if request.method == "POST":
+        name = request.form.get('name')
+        email = current_user.email
+        vehicle_id = request.form.get('Vid')
+        numb_plate = request.form.get('number_plate')
+        service = request.form.get('service')
+        manufacture_date = request.form.get('manudate')
+        expire_date = request.form.get('expdate')
+        issues = request.form.get('issues')
+        db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`vehicle_id`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`) VALUES ('{name}','{email}','{vehicle_id}','{numb_plate}','{service}','{manufacture_date}','{expire_date}','{issues}') ")
+    em = current_user.email
+    query = db.engine.execute(f"SELECT `vehicle_id` FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
+    number_plate = db.engine.execute(f"SELECT `num_plate` FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
+    services = db.engine.execute(f"SELECT `services_name` FROM `services`")
+    return render_template('service.html',services=services,query=query,number_plate=number_plate)
 
 # customer details is displayed
 @app.route('/customer_details')
@@ -147,20 +172,18 @@ def edit(cid):
         number = request.form.get('number')
         address = request.form.get('address')
         db.engine.execute(f"UPDATE `customer` SET `name`='{name}',`mobile`='{number}',`address`='{address}' WHERE `customer`.`cid`={cid};")
-        print(name)
         flash("Information Updated Successfully", "success")
         return redirect('/customer_details')
     return render_template('c_update.html', posts=posts,cust=cust)
 
-# Shows Customer Vehicle Information 
-@app.route("/warranty")
+# Customer/admin is logged out
+@app.route("/logout")
 @login_required
-def warranty():
-    em = current_user.email
-    query = db.engine.execute(f"SELECT  *FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
-    count = db.engine.execute(f"SELECT COUNT(*) FROM `customer_vehicle`")
-    return render_template('vehicle_info.html',query=query,count=count)
-    
+def logout():
+    logout_user()
+    flash(f"Logout Successful", "info")
+    return redirect(url_for('login'))
+
 # Shows the Products which are available,
 @app.route('/product')
 @login_required
@@ -168,11 +191,13 @@ def Product():
     # query = db.engine.execute(f"SELECT *FROM `customer_vehicle`")
     return render_template('product.html')
 
-# Shows Customer the Services we provide to the customer
-@app.route('/service')
+# Shows Customer Vehicle Information 
+@app.route("/warranty")
 @login_required
-def service():
-    return render_template('service.html')
+def warranty():
+    em = current_user.email
+    query = db.engine.execute(f"SELECT  *FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
+    return render_template('vehicle_info.html',query=query)
 
 # Contact us Page
 @app.route('/contact')
