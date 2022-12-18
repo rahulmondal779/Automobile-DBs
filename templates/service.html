@@ -7,39 +7,44 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-3 jumbotron">
+        <div class="col-md-auto jumbotron">
             <h3>Book Your Appointment</h3>
             <form action="/service" method="post">
                 <div class="input-group mb-3 mt-4">
                     <span class="input-group-text" id="basic-addon1">Name</span>
-                    <input type="text" class="form-control" placeholder="Enter Your Name" name="name" id="name" required>
+                    <input type="text" class="form-control" placeholder="Enter Your Name" name="name" id="name"
+                        required>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Email</span>
-                    <input type="text" class="form-control" placeholder="{{current_user.email}}" value="{{current_user.email}}" name="email"
-                        id="email" Disabled>
+                    <input type="text" class="form-control" placeholder="{{current_user.email}}"
+                        value="{{current_user.email}}" name="email" id="email" Disabled>
                 </div>
 
-                <div class="input-group mb-3">
+                <!-- <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Vehicle ID</span>
-                    {% for b in query %}
+                    {% for b in query  %}
                     <input type="text" class="form-control" placeholder="{{b.vehicle_id}}" name="Vid" id="Vid" value="{{b.vehicle_id}}" Disabled>
                     {% endfor %}
-                </div>
+                </div> -->
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Select Vehicle</span>
-                    <select class="form-select" name="number_plate" id="number_plate" >
+                    <select class="form-select" name="number_plate" id="number_plate">
+                        {% if c in number_plate %}
                         {% for c in number_plate %}
                         <option>{{c.num_plate}}</option required>
                         {% endfor %}
+                        {% else %}
+                        <option>No Vehicle Available</option required>
+                        {% endif %}
                     </select>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Service</span>
-                    <select class="form-select" name="service" id="service" required >
+                    <select class="form-select" name="service" id="service" required>
                         {% for a in services %}
                         <option>{{a.services_name}}</option>
                         {% endfor %}
@@ -48,7 +53,8 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Manufacture</span>
-                    <input type="date" class="form-control" placeholder="Enter Year" name="manudate" id="manudate" required>
+                    <input type="date" class="form-control" placeholder="Enter Year" name="manudate" id="manudate"
+                        required>
                 </div>
 
                 <div class="input-group mb-3">
@@ -66,6 +72,10 @@
                         class=" btn btn-primary btn-outline-dark text-black">Book</button>
                 </div><br>
             </form>
+            <div class="d-grid gap-2">
+                <a href="booking"><button
+                        class="btn btn-outline-primary btn-primary btn-sm text-white"><strong>Check For Previous Booking</strong></button></a>
+            </div>
         </div>
     </div>
 </div>

@@ -79,11 +79,6 @@ def index():
     except:
         return "Please Connect to Database"
 
-# Register sample
-@app.route("/r")
-def r():
-    return render_template('r.html')
-
 # Customer can login,
 @app.route("/login", methods=['POST', 'GET'])
 def login():
@@ -146,13 +141,13 @@ def service():
         issues = request.form.get('issues')
         db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`vehicle_id`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`) VALUES ('{name}','{email}','{vehicle_id}','{numb_plate}','{service}','{manufacture_date}','{expire_date}','{issues}') ")
     em = current_user.email
-    query = db.engine.execute(f"SELECT `vehicle_id` FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
+    query = db.engine.execute(f"SELECT `vehicle_id` FROM `customer` WHERE `customer`.`email`='{em}'")
     number_plate = db.engine.execute(f"SELECT `num_plate` FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")
     services = db.engine.execute(f"SELECT `services_name` FROM `services`")
     return render_template('service.html',services=services,query=query,number_plate=number_plate)
 
 # customer details is displayed
-@app.route('/customer_details')
+@app.route('/customer_details') 
 @login_required
 def c_details():
     log = db.engine.execute(f"SELECT *FROM `user` ")
@@ -204,10 +199,17 @@ def warranty():
 def contact():
     return render_template('contact.html')
 
+# This is Booking Page
+@app.route('/booking')
+def booking():
+    return render_template('booking.html')
+
+
 # Test Page
 @app.route('/test')
 def test():
     return render_template('test.html')
+
 
 # To run the application
 app.run(debug=True)
