@@ -3,4 +3,38 @@
 {% block title %}Bookings{% endblock title %}
 
 {% block body %}
+
+<div class="container  mt-3">
+    <div class="row">
+        <div class="col-2"></div>
+
+        <div class="col-4">
+            <h3>Previous Booking</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Vehicle Number</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                {% for a in query %}
+                <tbody>
+                    <tr>
+                        <td>{{a.name}}</td>
+                        <td>{{a.email}}</td>
+                        <td>{{a.num_plate}}</td>
+                        <td>{{a.description}}</td>
+                        <td>{{a.status}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

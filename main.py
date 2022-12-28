@@ -63,6 +63,7 @@ class Customer_vehicle_service(db.Model):
     manufacture = db.Column(db.String(50),nullable=False)
     exp_date = db.Column(db.String(50),nullable=False)
     textarea = db.Column(db.String(1000))
+    status = db.Column(db.String(10))
 
 # Service Name
 class Services(db.Model):
@@ -202,7 +203,9 @@ def contact():
 # This is Booking Page
 @app.route('/booking')
 def booking():
-    return render_template('booking.html')
+    em = current_user.email
+    query = db.engine.execute(f"SELECT *FROM `customer_vehicle_service` WHERE `customer_vehicle_service`.`email`='{em}'")
+    return render_template('booking.html',query=query)
 
 
 # Test Page
