@@ -135,12 +135,12 @@ def service():
         name = request.form.get('name')
         email = current_user.email
         vehicle_id = request.form.get('Vid')
-        numb_plate = request.form.get('number_plate')
+        num_plate = request.form.get('number_plate')
         service = request.form.get('service')
         manufacture_date = request.form.get('manudate')
         expire_date = request.form.get('expdate')
         issues = request.form.get('issues')
-        db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`vehicle_id`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`) VALUES ('{name}','{email}','{vehicle_id}','{numb_plate}','{service}','{manufacture_date}','{expire_date}','{issues}') ")
+        db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`vehicle_id`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`) VALUES ('{name}','{email}','{vehicle_id}','{num_plate}','{service}','{manufacture_date}','{expire_date}','{issues}') ")
     em = current_user.email
     query = db.engine.execute(f"SELECT `vehicle_id` FROM `customer` WHERE `customer`.`email`='{em}'")
     number_plate = db.engine.execute(f"SELECT `num_plate` FROM `customer_vehicle` WHERE `customer_vehicle`.`email`='{em}'")

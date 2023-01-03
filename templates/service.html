@@ -32,13 +32,10 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Select Vehicle</span>
                     <select class="form-select" name="number_plate" id="number_plate">
-                        {% if c in number_plate %}
                         {% for c in number_plate %}
                         <option>{{c.num_plate}}</option required>
                         {% endfor %}
-                        {% else %}
                         <option>No Vehicle Available</option required>
-                        {% endif %}
                     </select>
                 </div>
 
