@@ -24,6 +24,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/automobile'
 db = SQLAlchemy(app)
 
 
+
+
 # Tables in the sql server are represented as classes, this table is for Login and Register
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

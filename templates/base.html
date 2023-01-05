@@ -10,8 +10,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="shortcut icon" href="static\Bg\Red_Modern_Retro_Car_Logo_Icon-removebg-preview.png" type="image/x-icon" >
-
+  <link rel="shortcut icon" href="static\Bg\Red_Modern_Retro_Car_Logo_Icon-removebg-preview.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css">
+    
   <style>
     /* Dropdown Button */
     .dropbtn {
@@ -48,7 +50,7 @@
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-      background-color: rgb(120, 0, 218);
+      background-color: rgba(18, 55, 191, 0.895);
     }
 
     /* Show the dropdown menu on hover */
@@ -60,13 +62,16 @@
     .dropdown:hover .dropbtn {
       background-color: #18a2d8;
     }
-    {% block style %} {% endblock style %}
+
+      {% block style %}
+
+      {% endblock style %}
   </style>
   <title>{% block title %}{% endblock title %}</title>
 </head>
 
-<body style="background-color:rgb(88, 176, 244);" >
-  <nav style="background-color: rgb(0, 106, 255);" class="navbar navbar-expand-lg navbar-dark p-lg-0 my">
+<body style="background-color:#6351ce;">
+  <nav style="background-color: rgb(0,0,0)" class="navbar navbar-expand-lg navbar-dark p-lg-0 my">
     <div class="container-fluid ">
       <img src="static\Bg\Red_Modern_Retro_Car_Logo_Icon-removebg-preview.png" alt="" height="40">
       <!-- <a  class="navbar-brand" href="#">AMD's</a> -->
@@ -88,10 +93,10 @@
           <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
               aria-expanded="false">Details</a>
-            <div style="background-color: rgb(255, 145, 0);" class="dropdown-content">
-              <a class="dropdown-item text-white" href="/customer_details">Profile</a>
-              <a class="dropdown-item text-white" href="/warranty">Warranty</a>
-              <a class="dropdown-item text-white" href="/service">Service</a>
+            <div style="background-color: rgba(47, 241, 238, 0.205);" class="dropdown-content">
+              <a class="dropdown-item text-black" href="/customer_details">Profile</a>
+              <a class="dropdown-item text-black" href="/warranty">Warranty</a>
+              <a class="dropdown-item text-black" href="/service">Service</a>
           </li>
           {% endif %}
           <li class="nav-item active">
@@ -99,24 +104,25 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-            {% if current_user.is_authenticated %}            
-              <li class="nav-item active">
-                <a class="nav-link text-white" href="logout"><button class="btn btn-outline-dark text-white" type="submit">Logout</button></a>
-              </li>
-              {% else %}
-                <li class="nav-item active">
-                  <a class="nav-link text-white" href="login"><button class="btn btn-outline-dark my-2 my-sm-0 text-white" type="submit">Login</button></a>
-                </li>
-                <li class="nav-item active ">
-                  <a class="nav-link text-white" href="register"><button class="btn btn-outline-dark my-2 my-sm-0 text-white" type="submit">Register</button></a>
-                </li>
-            {% endif %}
+          {% if current_user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link text-white " href="logout"><button class="btn btn-outline-primary text-white"
+                type="submit">Logout</button></a>
+          </li>
+          {% else %}
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="login"><button class="btn btn-outline-dark my-2 my-sm-0 text-white"
+                type="submit">Login</button></a>
+          </li>
+          <li class="nav-item active ">
+            <a class="nav-link text-white" href="register"><button class="btn btn-outline-dark my-2 my-sm-0 text-white"
+                type="submit">Register</button></a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -129,7 +135,5 @@
     crossorigin="anonymous"></script>
 
   {% block body %}{% endblock body %}
-
 </body>
-
 </html>
