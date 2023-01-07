@@ -15,54 +15,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css">
     
   <style>
-    /* Dropdown Button */
-    .dropbtn {
-      background-color: #04AA6D;
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-    }
-
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #2c1616;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    /* Links inside the dropdown */
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-      background-color: rgba(18, 55, 191, 0.895);
-    }
-
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
-      background-color: #18a2d8;
-    }
-
+    .dropdown:hover .dropdown-menu {
+            display: block;
+        }
       {% block style %}
 
       {% endblock style %}
@@ -71,7 +26,7 @@
 </head>
 
 <body style="background-color:#6351ce;">
-  <nav style="background-color: rgb(0,0,0)" class="navbar navbar-expand-lg navbar-dark p-lg-0 my">
+  <nav style="background-color: rgb(0, 0, 0)" class="navbar navbar-expand-lg navbar-dark p-lg-0 my">
     <div class="container-fluid ">
       <img src="static\Bg\Red_Modern_Retro_Car_Logo_Icon-removebg-preview.png" alt="" height="40">
       <!-- <a  class="navbar-brand" href="#">AMD's</a> -->
@@ -91,12 +46,13 @@
           </li>
           {% if current_user.is_authenticated %}
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-              aria-expanded="false">Details</a>
-            <div style="background-color: rgba(47, 241, 238, 0.205);" class="dropdown-content">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-toggle="dropdown"
+              aria-expanded="false" aria-haspopup="true">Details</a>
+            <div style="background-color: rgba(182, 22, 218, 0.441);" class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item text-black" href="/customer_details">Profile</a>
               <a class="dropdown-item text-black" href="/warranty">Warranty</a>
               <a class="dropdown-item text-black" href="/service">Service</a>
+              </div>
           </li>
           {% endif %}
           <li class="nav-item active">
@@ -111,11 +67,11 @@
           </li>
           {% else %}
           <li class="nav-item active">
-            <a class="nav-link text-white" href="login"><button class="btn btn-outline-dark my-2 my-sm-0 text-white"
+            <a class="nav-link text-white" href="login"><button class="btn btn-outline-primary my-2 my-sm-0 text-white"
                 type="submit">Login</button></a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link text-white" href="register"><button class="btn btn-outline-dark my-2 my-sm-0 text-white"
+            <a class="nav-link text-white" href="register"><button class="btn btn-outline-primary my-2 my-sm-0 text-white"
                 type="submit">Register</button></a>
           </li>
           {% endif %}
@@ -135,5 +91,7 @@
     crossorigin="anonymous"></script>
 
   {% block body %}{% endblock body %}
+
+  {% include "footer.html" %}
 </body>
 </html>
