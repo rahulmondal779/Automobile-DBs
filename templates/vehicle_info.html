@@ -9,12 +9,13 @@
     height: 200px;
     border: 1px solid #000000;
     perspective: 1000px;
+    position: relative;
     /* Remove this if you don't want the 3D effect */
   }
 
   /* This container is needed to position the front and back side */
   .flip-card-inner {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -26,6 +27,7 @@
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    position: relative;
   }
 
   /* Position the front and back side */
@@ -41,23 +43,27 @@
  
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-color: rgb(23, 27, 41);
+    /* background-color: rgb(23, 27, 41); */
     color: black;
+    position: absolute;
   }
 
   /* Style the back side */
   .flip-card-back {
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
     background-color: rgb(195, 0, 255);
     transform: rotateY(180deg);
+    position: relative;
   }
 
   .card {
-    --bs-card-border-color: #6351ce;
+    --bs-card-border-color: transparent;
     --bs-card-cap-bg: rgb(88, 176, 244);
-    --bs-card-bg: #6351ce;
+    --bs-card-bg: #6351ce; */
     background-color: var(--bs-card-bg);
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    background-color: transparent;
+    position: relative;
   }
 
   /* .content {
@@ -68,12 +74,12 @@
 </style>
 {% endblock style %}
 {% block body %}
-<div class="container mt-1">
+<div class="container mt-1" >
   <div class="row ">
     <div class="col-md-auto"></div>
     {% for a in query %}
-    <div class="col-md-3">
-      <div class="flip-card card">
+    <div class="col-md-3" >
+      <div class="flip-card card"  >
         <div class="flip-card-inner">
           <div class="flip-card-front mt-2">
             <img src="static\Bg\car-two.gif" class="card-img-top" alt="Car">
