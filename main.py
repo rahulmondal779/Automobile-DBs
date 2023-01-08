@@ -80,7 +80,7 @@ def index():
         User.query.all()
         return render_template('index.html')
     except:
-        return "Please Connect to Database"
+        return render_template('error.html')
 
 # Customer can login,
 @app.route("/login", methods=['POST', 'GET'])
@@ -174,6 +174,28 @@ def edit(cid):
         return redirect('/customer_details')
     return render_template('c_update.html', posts=posts,cust=cust)
 
+# Editing Booking Page
+@app.route("/edit-booking/<string:cvs_id>",methods=['POST','GET'])
+@login_required
+def edit_booking(cvs_id):
+     em = current_user.email
+     query = db.engine.execute(f"SELECT *FROM `customer_vehicle_service` WHERE `customer_vehicle_service`.`email`='{em}'")
+     posts = Customer_vehicle_service.query.filter_by(cvs_id=cvs_id).first()
+     if request.method == "POST":
+        status = request.form.get('status')
+        db.engine.execute(f"UPDATE `customer_vehicle_service` SET `status`='{status}' WHERE `customer_vehicle_service`.`cvs_id`={cvs_id};")
+        flash("Status Updated Successfully", "success")
+        return redirect('/booking')
+     return render_template('edit_booking.html',query=query)
+
+# This is Booking Page
+@app.route('/booking')
+@login_required
+def booking():
+    em = current_user.email
+    query = db.engine.execute(f"SELECT *FROM `customer_vehicle_service` WHERE `customer_vehicle_service`.`email`='{em}'")
+    return render_template('booking.html',query=query)
+
 # Customer/admin is logged out
 @app.route("/logout")
 @login_required
@@ -202,12 +224,10 @@ def warranty():
 def contact():
     return render_template('contact.html')
 
-# This is Booking Page
-@app.route('/booking')
-def booking():
-    em = current_user.email
-    query = db.engine.execute(f"SELECT *FROM `customer_vehicle_service` WHERE `customer_vehicle_service`.`email`='{em}'")
-    return render_template('booking.html',query=query)
+# Coming Soon Page
+@app.route('/comingsoon')
+def coming_soon():
+    return render_template('coming_soon.html')
 
 
 # Test Page

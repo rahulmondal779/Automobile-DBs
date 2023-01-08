@@ -2,13 +2,15 @@
 
 {% block title %}Bookings{% endblock title %}
 
-{% block body %}
+{% block style %}
+{% endblock style %}
 
-<div class="container  mt-3">
+{% block body %}
+<div class="container mt-3 p-4">
     <div class="row">
-        <div class="col-auto"></div>
-        <div class="col-4">
-            <h3>Previous Booking</h3>
+        <!-- <div class="col-1"></div> -->
+        <div class="col-auto">
+            <h3 style="color:rgb(0, 187, 255)">Previous Booking</h3>
             <table class="table jumbotron">
                 <thead>
                     <tr>
@@ -19,6 +21,23 @@
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
+                {% if current_user.email == "admin@gmail.com" %}
+                {% for a in query %}
+                <tbody>
+                    <tr>
+                        <td>{{a.name}}</td>
+                        <td>{{a.email}}</td>
+                        <td>{{a.num_plate}}</td>
+                        <td>{{a.description}}</td>
+                        <td>{{a.status}}</td>
+                        <td>
+                            <a class="nav-link text-white" href="/edit-booking/{{a.cvs_id}}"><button class="btn btn-warning btn-outline-primary my-2 my-sm-0 text-white"
+                                type="submit">Edit Booking</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+                {% else %}
                 {% for a in query %}
                 <tbody>
                     <tr>
@@ -30,13 +49,11 @@
                     </tr>
                 </tbody>
                 {% endfor %}
+                {% endif %}
+                
             </table>
         </div>
     </div>
-    {% if current_user.email == "admin@gmail.com" %}
-    <button type="button" class="btn btn-primary">Primary</button>
-    {% endif %}
     
 </div>
-
 {% endblock %}

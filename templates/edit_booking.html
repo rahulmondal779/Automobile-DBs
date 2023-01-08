@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Bookings{% endblock title %}
+
+{% block style %}
+{% endblock style %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">{{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>      
+  {% endfor %}
+  {% endif %}  
+  {% endwith %}
+    <div class="container mt-3 p-4">
+        <div class="row">
+            <!-- <div class="col-auto"></div> -->
+            <div class="col-auto">
+                <h3 style="color:rgb(0, 187, 255)">Edit Booking</h3>
+                <table class="table jumbotron">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Vehicle Number</th>
+                            <th scope="col">Service</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    {% for a in query %}
+                    <tbody>
+                        <tr>
+                            <td>{{a.name}}</td>
+                            <td>{{a.email}}</td>
+                            <td>{{a.num_plate}}</td>
+                            <td>{{a.description}}</td>
+                            <form action="/edit-booking/{{a.cvs_id}}" method="POST">
+                            <td>
+                                    <select class="form-select" name="status" id="status">
+                                        <option value="Done" >Done</option required>
+                                        <option value="Pending" >Pending</option required>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="container">
+                                        <button style="background-color: rgb(0, 255, 0);" type="submit"
+                                            class=" btn btn-primary btn-outline-dark text-black">Update</button>
+                                    </div>
+                                </td>
+                                </form>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
