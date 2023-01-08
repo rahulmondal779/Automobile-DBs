@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Vehicle {% endblock title %}
+{% block style %}{% endblock style %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">{{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5 jumbotron">
+            <h3>Add Vehicle</h3>
+            <form action="/add_vehicle" method="POST">
+                <div class="input-group mb-3 mt-4">
+                    <span class="input-group-text" id="basic-addon1">Vehicle ID</span>
+                    {% for a in query %}
+                    <input type="text" class="form-control" placeholder="{{a.vehicle_id}}" value="{{a.vehicle_id}}" name="vehicle_id" id="vehicle_id" Disabled>
+                    {% endfor %}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                    <input type="text" class="form-control" placeholder="{{current_user.email}}" value="{{current_user.email}}" name="email" id="email" Disabled>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Vehicle Name</span>
+                    <input type="text" class="form-control" placeholder="Enter Vehicle Name"  name="vehicle_name" id="vehicle_name" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Model</span>
+                    <input type="text" class="form-control" placeholder="Enter Model"  name="model" id="model" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">About</span>
+                    <input type="text" class="form-control" placeholder="Description" name="about" id="about" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Color</span>
+                    <input type="text" class="form-control" placeholder="Color" name="color" id="color" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Specs</span>
+                    <input type="text" class="form-control" placeholder="Enter Specialization" name="specs" id="specs" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Vehicle Number</span>
+                    <input type="text" class="form-control" placeholder="Enter Vehicle Number" name="num_plate" id="num_plate" required>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Warrenty</span>
+                    <input type="date" class="form-control" placeholder="Enter the Warrenty" name="warrenty" id="warrenty" required>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Manufacture Date</span>
+                    <input type="Number" class="form-control" placeholder="Enter the Manufacture Date" name="manudate" id="manudate" required>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button style="background-color: rgb(0, 255, 0);" type="submit"
+                        class=" btn btn-primary btn-outline-dark text-black">Add Vehicle</button>
+                </div><br>
+            </form>
+            <div class="d-grid gap-2">
+                <a href="/warranty"><button class="btn btn-outline-primary btn-primary text-white"><strong>Vehicle Available</strong></button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

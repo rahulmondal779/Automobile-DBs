@@ -11,6 +11,7 @@
         "encpassword",
         "expdate",
         "manudate",
+        "numplate",
         "sqlalchemy",
         "warrenty",
         "werkzeug",
