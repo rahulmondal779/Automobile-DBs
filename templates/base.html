@@ -18,12 +18,20 @@
     .dropdown:hover .dropdown-menu {
       display: block;
     }
+    .bg-image {
+      background-image: url('static\Bg\car.gif');
+      background-size: cover;
+      background-position: center;
+    }
+    .gradient-bg {
+  background: linear-gradient(to right, #0095ff, #ee00ffa1);
+}
       {% block style %}{% endblock style %}
   </style>
   <title>{% block title %}{% endblock title %}</title>
 </head>
 
-<body style="background-color:#090033;">
+<body class="bg-image gradient-bg" style="background-color:#05006a;">
   <nav style="background-color: rgb(0, 0, 0)" class="navbar navbar-expand-lg navbar-dark p-lg-1 my">
     <div class="container-fluid ">
       <img src="static\Bg\Red_Modern_Retro_Car_Logo_Icon-removebg-preview.png" alt="" height="40">
