@@ -159,7 +159,7 @@ def service():
     if request.method == "POST":
         name = request.form.get('name')
         email = current_user.email
-        vehicle_id = request.form.get('Vid')
+        # vehicle_id = request.form.get('Vid')
         num_plate = request.form.get('number_plate')
         service = request.form.get('service')
         manufacture_date = request.form.get('manudate')
@@ -167,7 +167,7 @@ def service():
         issues = request.form.get('issues')
         status = 'Pending'
         flash(f"Booking Confirmed", "success")
-        db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`vehicle_id`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`,`status`) VALUES ('{name}','{email}','{vehicle_id}','{num_plate}','{service}','{manufacture_date}','{expire_date}','{issues}','{status}') ")
+        db.engine.execute(f"INSERT INTO `customer_vehicle_service` (`name`,`email`,`num_plate`,`description`,`manufacture`,`exp_date`,`textarea`,`status`) VALUES ('{name}','{email}','{num_plate}','{service}','{manufacture_date}','{expire_date}','{issues}','{status}') ")
     return render_template('service.html', services=services, query=query, number_plate=number_plate)
 
 # This is Booking Page
@@ -208,8 +208,8 @@ def edit(cid):
 @login_required
 def edit_booking(cvs_id):
     em = current_user.email
-    query = db.engine.execute(f"SELECT *FROM `customer_vehicle_service` WHERE `customer_vehicle_service`.`email`='{em}'")
-    posts = Customer_vehicle_service.query.filter_by(cvs_id=cvs_id).first()
+    query = db.engine.execute(f"SELECT * FROM `customer_vehicle_service`")
+    # posts = Customer_vehicle_service.query.filter_by(cvs_id=cvs_id).first()
     if request.method == "POST":
         status = request.form.get('status')
         db.engine.execute(f"UPDATE `customer_vehicle_service` SET `status`='{status}' WHERE `customer_vehicle_service`.`cvs_id`={cvs_id};")
