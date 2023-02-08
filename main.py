@@ -43,7 +43,7 @@ class Customer(db.Model):
 # Table to store the customer vehicle
 class Customer_vehicle(db.Model):
     cvid = db.Column(db.Integer, primary_key=True)
-    vehicle_id = db.Column(db.String(20), unique=True)
+    vehicle_id = db.Column(db.String(20))
     cust_id = db.Column(db.Integer)
     vehicle_name = db.Column(db.String(20))
     model = db.Column(db.String(20))
@@ -133,6 +133,7 @@ def add_vehicle():
     query = db.engine.execute(f"SELECT *FROM `customer` WHERE `customer`.`email`='{em}'")
     if request.method == "POST":
         vehicle_id = request.form.get('vehicle_id')
+        print(vehicle_id)
         email = current_user.email
         vehicle_name = request.form.get('vehicle_name')
         model = request.form.get('model')
