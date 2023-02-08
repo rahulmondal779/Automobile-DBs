@@ -101,22 +101,7 @@ INSERT INTO `customer_vehicle_service` (`cvs_id`, `name`, `email`, `vehicle_id`,
 (17, 'rahul', 'admin@gmail.com', 'None', 'HR26DQ1316', 'Regular Service', '2022-12-30', '2027-07-30', '', 'Done'),
 (18, 'test123', 'adi@gmail.com', 'None', 'No Vehicle', 'Parts Replacement', '2023-01-29', '2023-01-25', '', '');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cust_bill`
---
-
-CREATE TABLE `cust_bill` (
-  `b_id` int(11) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `fullname` varchar(20) NOT NULL,
-  `mobile` varchar(10) NOT NULL,
-  `vehicle_id` varchar(10) NOT NULL,
-  `next_service` date NOT NULL,
-  `service_date` date NOT NULL,
-  `cost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
